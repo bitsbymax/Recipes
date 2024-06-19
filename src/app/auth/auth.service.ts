@@ -54,7 +54,7 @@ export class AuthService {
     this.user$.next(null);
     this.router.navigate(['/auth']);
 
-    localStorage.removeItem('userData');//очищаємо дані при вилогіненні
+    localStorage.removeItem('userData');//очищаємо дані при логауті
 
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
@@ -102,7 +102,7 @@ export class AuthService {
 
   private handleError(errorRes: HttpErrorResponse) {//метод де ми централізовано обробляємо помилки чи то при реєстрації чи то при авторизації
     console.log(errorRes);
-    let defError = 'An error occured!';
+    let defError = 'An error occurred!';
     if (!errorRes.error || !errorRes.error.error) {//додаткова перевірка, у разі якщо повернеться помилка без ключа/вкладеного ключа error, тоді повернемо весь об'єкти помилки
       return throwError(errorRes);
     }

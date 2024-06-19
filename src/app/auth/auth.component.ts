@@ -21,7 +21,7 @@ export class AuthComponent implements OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private cmpFactoryResolver: ComponentFactoryResolver //цей клас вже застарілий, але ми викор. його просто як приклад
+    private cmpFactoryResolver: ComponentFactoryResolver //цей клас вже застарілий, але ми використовуємо його просто як приклад
   ) { }
 
   onSwitchMode() {
@@ -48,7 +48,7 @@ export class AuthComponent implements OnDestroy {
         this.router.navigate(['/recipes']);
       },
       error: (errorMessage) => {
-        this.error = errorMessage;//ця змінна непотрібна, якщо викор. showErrorAlert()
+        this.error = errorMessage;//ця змінна непотрібна, якщо використовується showErrorAlert()
         this.showErrorAlert(errorMessage);
         this.isLoading = false;
       }
@@ -66,12 +66,12 @@ export class AuthComponent implements OnDestroy {
 
     const hostViewContainerRef = this.alertHost.vcRef; //зберігаємо в змінній посилання на об'єкт ViewContainerRef, який в свою чергу дає можливість взаємодіяти з місцем в нашому DOM де додана директива, яка записана в властивість alertHost
 
-    hostViewContainerRef.clear();//очищає всі компоненти, які були відрендерені в тому місці DOM раніше
+    hostViewContainerRef.clear();//очищає всі компоненти, які були відмальовані в тому місці DOM раніше
     const cmpRef = hostViewContainerRef.createComponent(alertCmpFactory);
-    // hostViewContainerRef.createComponent<AlertComponent>(AlertComponent); - //?сучасний спосіб створення компонента без ComponentFactoryResolver, хоч і попередінй варіант досі працює
+    // hostViewContainerRef.createComponent<AlertComponent>(AlertComponent); - //?сучасний спосіб створення компонента без ComponentFactoryResolver, хоч і попередній варіант досі працює
 
-    cmpRef.instance.message = message;// instance дає доступ до конкретного екземпляру компонета який було створено і записано в cmpRef4 
-    this.closeSub = cmpRef.instance.close.subscribe(() => {//так як close --> EventEmitter, підписуємось на подію і коли вона станеться, ми розумітимемо, що компонет вже не відображається
+    cmpRef.instance.message = message;// instance дає доступ до конкретного екземпляру компонента який було створено і записано в cmpRef4 
+    this.closeSub = cmpRef.instance.close.subscribe(() => {//так як close --> EventEmitter, підписуємось на подію і коли вона станеться, ми розумітимемо, що компонент вже не відображається
       hostViewContainerRef.clear();
     });
   }
