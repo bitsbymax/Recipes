@@ -36,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)], //forChild() викор для модулів, які ми потім будемо імпортувати в основний модуль
+  imports: [RouterModule.forChild(routes)], //forChild() використовується для модулів, які ми потім будемо імпортувати в основний модуль
   exports: [RouterModule]
 })
 export class RecipesRoutingModule { }

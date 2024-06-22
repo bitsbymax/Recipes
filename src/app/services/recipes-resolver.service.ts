@@ -7,7 +7,7 @@ import { RecipeBookService } from './recipe-book.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RecipesResolverService implements Resolve<Recipe[]> {// Цей резолвер нам потрібен для того, щоб при відкритті, наприклад, деталей рецепта і після перезавантаження сторінки, у нас не відображався порожній компонент. Резолвер буде викликатися перед переходом за адресою, до якої він застсований і виконувати відповідний код  
+export class RecipesResolverService implements Resolve<Recipe[]> {// Цей резолвер нам потрібен для того, щоб при відкритті, наприклад, деталей рецепта і після перезавантаження сторінки, у нас не відображався порожній компонент. Резолвер буде викликатися перед переходом за адресою, до якої він застосований і виконувати відповідний код  
   constructor(
     private storageService: DataStorageService,
     private recipeService: RecipeBookService

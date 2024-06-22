@@ -10,7 +10,7 @@ import { RecipeBookService } from 'src/app/services/recipe-book.service';
 })
 export class RecipeEditComponent implements OnInit {
   id: number;
-  editMode = false; //властивість показуватиме чи ми стоврюємо новий рецепт чи редагуємо існуючий, по дефолту ми припускаємо, що ми створюємо новий рецепт
+  editMode = false; //властивість показуватиме чи ми створюємо новий рецепт чи редагуємо існуючий, по дефолту ми припускаємо, що ми створюємо новий рецепт
   recipeForm: FormGroup;
 
   constructor(
