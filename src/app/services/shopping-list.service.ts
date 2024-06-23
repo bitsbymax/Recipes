@@ -20,7 +20,7 @@ export class ShoppingListService {
 
   addIngredient = (ingredient: Ingredient) => {
     this.ingredients.push(ingredient);
-    this.ingredientsChanged.next([...this.ingredients]); // цей метод next() дає модливість всім підписникам через Subject дізнатися про те, що масив інгредієнтів було оновлено
+    this.ingredientsChanged.next([...this.ingredients]); // цей метод next() дає можливість всім підписникам через Subject дізнатися про те, що масив інгредієнтів було оновлено
   };
   addIngredients(ingredients: Ingredient[]) {
     console.log(ingredients)
