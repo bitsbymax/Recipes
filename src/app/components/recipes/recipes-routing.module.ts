@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: '',
     component: RecipesComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard], //передаємо Guard
     children: [//потрібно пам'ятати, що порядок {path} важливий, динамічні параметри повинні бути в кінці масиву, щоб шлях правильно парсився
       {
         path: '',

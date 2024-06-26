@@ -13,10 +13,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   userSub: Subscription;
 
-  constructor(private storageService: DataStorageService, private authService: AuthService) {}
-  
+  constructor(
+    private storageService: DataStorageService,
+    private authService: AuthService
+  ) {}
+
   ngOnInit() {
-    this.userSub = this.authService.user$.subscribe(user => {
+    this.userSub = this.authService.user$.subscribe((user) => {
       this.isAuthenticated = !!user; //перетворюємо в булеве значення параметр user (null/{})
     });
   }
@@ -25,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onLoadData() {
-    this.storageService.loadRecipes().subscribe()
+    this.storageService.loadRecipes().subscribe();
   }
 
   onLogout() {

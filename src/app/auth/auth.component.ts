@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { AuthResponseData, AuthService } from './auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnDestroy {
+export class AuthComponent implements OnInit, OnDestroy {
   @ViewChild(CmpPlaceholderDirective, { static: false }) alertHost: CmpPlaceholderDirective; //передаючи в ViewChild нашу директиву, ViewChild буде брати перше знаходження нашої директиви в DOM і далі ми збережемо її в властивість
   loginMode = false;
   isLoading = false;
@@ -22,7 +22,13 @@ export class AuthComponent implements OnDestroy {
     private authService: AuthService,
     private router: Router,
     private cmpFactoryResolver: ComponentFactoryResolver //цей клас вже застарілий, але ми використовуємо його просто як приклад
-  ) { }
+  ) {}
+
+  ngOnInit(): void {
+    // this.router.events.subscribe((event) => {
+    //   console.log(event)
+    // })
+  }
 
   onSwitchMode() {
     this.loginMode = !this.loginMode;
@@ -45,7 +51,7 @@ export class AuthComponent implements OnDestroy {
     authObservable.subscribe({
       next: (res) => {
         this.isLoading = false;
-        this.router.navigate(['/recipes']);
+        this.router.navigateByUrl('/recipes');
       },
       error: (errorMessage) => {
         this.error = errorMessage;//ця змінна непотрібна, якщо використовується showErrorAlert()
